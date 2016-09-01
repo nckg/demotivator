@@ -1,0 +1,35 @@
+{
+    "name": "nckg/demotivator",
+    "description": "Generate fake quotes",
+    "minimum-stability": "stable",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nick Goris",
+            "email": "nickgoris@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Nckg\\Demotivator\\": "src/Nckg/Demotivator"
+        }
+    },
+    "require": {
+        "intervention/image": "^2.3",
+        "google/fonts": "dev-master"
+    },
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "google/fonts",
+                "version": "dev-master",
+                "source": {
+                    "url": "https://github.com/google/fonts",
+                    "type": "git",
+                    "reference": "origin/master"
+                }
+            }
+        }
+    ]
+}
