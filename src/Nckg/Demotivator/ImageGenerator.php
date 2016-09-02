@@ -3,6 +3,7 @@
 
 namespace Nckg\Demotivator;
 
+use ColorThief\ColorThief;
 use Intervention\Image\Image;
 use Intervention\Image\ImageManager;
 
@@ -47,10 +48,12 @@ class ImageGenerator
 
         // Insert text in background image
         $textGenerator = new QuoteToImage($this->imageManager, $this->fontCollection);
+        $textGenerator->setFontColour($this->getFontColor($image));
         $image->insert($textGenerator->make($quote), 'center');
 
         return $image;
     }
+
 
     /**
      * Fetches a new image from a specific source
@@ -79,5 +82,30 @@ class ImageGenerator
         $image->resize(1080, 1080, function ($constraint) {
             $constraint->upsize();
         });
+    }
+
+    /**
+     * @param $image
+     * @return string
+     */
+    protected function getFontColor($image)
+    {
+        // Get the dominant color from the image
+        $fontColor = '#ffffff';
+        $dominantColor = ColorThief::getColor($image->getCore());
+
+        // Calculate percieved brightness
+        $contrast = sqrt(
+            $dominantColor[0] * $dominantColor[0] * .241 +
+            $dominantColor[1] * $dominantColor[1] * .691 +
+            $dominantColor[2] * $dominantColor[2] * .068
+        );
+
+        if ($contrast > 130) {
+            //bright color, use dark font
+            $fontColor = '#111111';
+        }
+
+        return $fontColor;
     }
 }

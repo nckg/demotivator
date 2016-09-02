@@ -17,7 +17,8 @@
     "require": {
         "intervention/image": "^2.3",
         "google/fonts": "dev-master",
-        "phpunit/phpunit": "^5.5"
+        "phpunit/phpunit": "^5.5",
+        "ksubileau/color-thief-php": "^1.3"
     },
     "repositories": [
         {

@@ -22,6 +22,10 @@ class QuoteToImage
      * @var string
      */
     protected $fontPath;
+    /**
+     * @var string
+     */
+    protected $fontColour;
 
     /**
      * TextGenerator constructor.
@@ -92,7 +96,7 @@ class QuoteToImage
             $font->file($this->fontPath . $fontFile);
             $font->size($startingFontSize);
             $font->align("center");
-            $font->color('#ffffff');
+            $font->color($this->fontColour ?: '#ffffff');
             $font->valign('top');
 
             $fontMetrics = $font->getBoxSize();
@@ -114,5 +118,13 @@ class QuoteToImage
     public function setFontPath($fontPath)
     {
         $this->fontPath = $fontPath;
+    }
+
+    /**
+     * @param $colour
+     */
+    public function setFontColour($colour)
+    {
+        $this->fontColour = $colour;
     }
 }
