@@ -16,7 +16,8 @@
     },
     "require": {
         "intervention/image": "^2.3",
-        "google/fonts": "dev-master"
+        "google/fonts": "dev-master",
+        "phpunit/phpunit": "^5.5"
     },
     "repositories": [
         {
