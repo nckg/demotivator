@@ -53,7 +53,7 @@ class QuoteToImage
         $useableFonts = $this->getFont($parts);
 
         foreach ($parts as $key => $part) {
-            $posY = $this->applyLineToImage($image, $useableFonts, $key, $part, $posY);
+            $posY = $this->applyLineToImage($image, $useableFonts->fonts, $key, $part, $posY);
         }
 
         $image->resizeCanvas(null, $posY, 'top');
@@ -72,28 +72,40 @@ class QuoteToImage
      */
     protected function getFont($parts)
     {
-        return $this->fonts
+        $filtered = $this->fonts
             ->filter(function ($pairs) use ($parts) {
-                return count($pairs) == count($parts);
-            })
-            ->first($this->fonts->first());
+                return $pairs->total == count($parts);
+            });
+
+        if ($filtered->isEmpty()) {
+            return $this->fonts->first();
+        }
+
+        return $filtered->random();
     }
 
     /**
      * @param $useableFonts
      * @param $key
      * @param $image
-     * @param $part
+     * @param $textPart
      * @param $posY
      * @return mixed
      */
-    protected function applyLineToImage(Image $image, $useableFonts, $key, $part, $posY)
+    protected function applyLineToImage(Image $image, $useableFonts, $key, $textPart, $posY)
     {
         $startingFontSize = 1000;
 
         $fontFile = (isset($useableFonts[$key])) ? $useableFonts[$key] : $useableFonts[0];
-        $image->text(strtoupper($part), 400, $posY, function (\Intervention\Image\Gd\Font $font) use ($fontFile, $startingFontSize, &$posY) {
-            $font->file($this->fontPath . $fontFile);
+
+        $line = new Text($textPart);
+
+        foreach (explode(',', $fontFile->transform) as $transformation) {
+            $line->$transformation();
+        }
+
+        $image->text($line, 400, $posY, function (\Intervention\Image\Gd\Font $font) use ($fontFile, $startingFontSize, &$posY) {
+            $font->file($this->fontPath . $fontFile->file);
             $font->size($startingFontSize);
             $font->align("center");
             $font->color($this->fontColour ?: '#ffffff');
@@ -106,7 +118,7 @@ class QuoteToImage
                 $fontMetrics = $font->getBoxSize();
             }
 
-            $posY += $fontMetrics['height'] + 10;
+            $posY += $fontMetrics['height'] + 2;
         });
 
         return $posY;

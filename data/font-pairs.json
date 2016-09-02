@@ -1,14 +1,118 @@
 [
-    [
-        "/ofl/oswald/Oswald-Bold.ttf"
-    ],
-    [
-        "/ofl/josefinslab/JosefinSlab-Regular.ttf",
-        "/ofl/josefinsans/JosefinSans-Bold.ttf"
-    ],
-    [
-        "/ofl/josefinsans/JosefinSans-Bold.ttf",
-        "/ofl/josefinslab/JosefinSlab-Regular.ttf",
-        "/ofl/josefinsans/JosefinSans-Bold.ttf"
-    ]
+    {
+        "total": 1,
+        "fonts": [
+            {
+                "file": "/ofl/oswald/Oswald-Bold.ttf",
+                "transform": "upper"
+            }
+        ]
+    },
+    {
+        "total": 2,
+        "fonts": [
+            {
+                "file": "/ofl/josefinslab/JosefinSlab-Regular.ttf",
+                "transform": "upper"
+            },
+            {
+                "file": "/ofl/josefinsans/JosefinSans-Bold.ttf",
+                "transform": "upper"
+            }
+        ]
+    },
+    {
+        "total": 2,
+        "fonts": [
+            {
+                "file": "/ofl/amaticsc/AmaticSC-Regular.ttf",
+                "transform": ""
+            },
+            {
+                "file": "/ofl/josefinsans/JosefinSans-Bold.ttf",
+                "transform": "upper"
+            }
+        ]
+    },
+    {
+        "total": 2,
+        "fonts": [
+            {
+                "file": "/ofl/playfairdisplay/PlayfairDisplay-Bold.ttf",
+                "transform": ""
+            },
+            {
+                "file": "/ofl/alice/Alice-Regular.ttf",
+                "transform": ""
+            }
+        ]
+    },
+    {
+        "total": 2,
+        "fonts": [
+            {
+                "file": "/ofl/coustard/Coustard-Black.ttf",
+                "transform": ""
+            },
+            {
+                "file": "/ofl/leckerlione/LeckerliOne-Regular.ttf",
+                "transform": ""
+            }
+        ]
+    },
+    {
+        "total": 3,
+        "fonts": [
+            {
+                "file": "/apache/robotocondensed/RobotoCondensed-Bold.ttf",
+                "transform": "upper"
+            },
+            {
+                "file": "/ofl/alegreya/Alegreya-Regular.ttf",
+                "transform": ""
+            },
+            {
+                "file": "/apache/robotocondensed/RobotoCondensed-Bold.ttf",
+                "transform": "upper"
+            }
+        ]
+    },
+    {
+        "total": 3,
+        "fonts": [
+            {
+                "file": "/ofl/lato/Lato-Black.ttf",
+                "transform": "upper"
+            },
+            {
+                "file": "/ofl/grandhotel/GrandHotel-Regular.ttf",
+                "transform": ""
+            },
+            {
+                "file": "/ofl/lato/Lato-Black.ttf",
+                "transform": "upper"
+            }
+        ]
+    },
+    {
+        "total": 4,
+        "fonts": [
+            {
+                "file": "/ofl/playfairdisplay/PlayfairDisplay-Bold.ttf",
+                "transform": ""
+            },
+            {
+                "file": "/ofl/alice/Alice-Regular.ttf",
+                "transform": ""
+            },
+            {
+                "file": "/ofl/playfairdisplay/PlayfairDisplay-Bold.ttf",
+                "transform": ""
+            },
+            {
+                "file": "/ofl/alice/Alice-Regular.ttf",
+                "transform": ""
+            }
+        ]
+    }
 ]
