@@ -1,7 +1,7 @@
 {
     "name": "nckg/demotivator",
     "description": "Generate fake quotes",
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "license": "MIT",
     "authors": [
         {
