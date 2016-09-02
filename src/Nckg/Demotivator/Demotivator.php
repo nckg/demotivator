@@ -7,7 +7,7 @@ use ColorThief\ColorThief;
 use Intervention\Image\Image;
 use Intervention\Image\ImageManager;
 
-class ImageGenerator
+class Demotivator
 {
     /**
      * @var ImageManager
