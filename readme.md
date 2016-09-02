@@ -6,6 +6,7 @@ Do you like to have your dreams crushed or  like to be put down? Well, this is t
 
 This package will fetch an image from Unsplash and will paste a nice demotivational quote on top of it.
 
+![example](https://github.com/nckg/demotivator/raw/master/example.jpg)
 
 ## Code Samples
 
