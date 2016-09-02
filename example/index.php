@@ -2,7 +2,7 @@
 
 use Intervention\Image\ImageManager;
 use Nckg\Demotivator\Collection;
-use Nckg\Demotivator\ImageGenerator;
+use Nckg\Demotivator\Demotivator;
 
 require __DIR__ . "/../vendor/autoload.php";
 
@@ -12,8 +12,8 @@ $quotes = new Collection(json_decode(file_get_contents(realpath(__DIR__ . "/../d
 // get fonts
 $fonts = new Collection(json_decode(file_get_contents(realpath(__DIR__ . "/../data/font-pairs.json"))));
 
-$demotivator = new ImageGenerator($fonts, new ImageManager);
+$demotivator = new Demotivator($fonts, new ImageManager);
 
 $image = $demotivator->make($quotes->random());
 
-echo $image->response('jpg');
+$image->save('example.jpg');
