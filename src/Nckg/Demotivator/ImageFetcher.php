@@ -19,16 +19,17 @@ class ImageFetcher
     private $imageManager;
 
     /**
-     * Unsplash constructor.
+     *
      * @param ImageManager $imageManager
      */
     public function __construct(ImageManager $imageManager)
     {
         $this->imageManager = $imageManager;
-
     }
 
     /**
+     * Fetch an image from url (or file)
+     *
      * @return \Intervention\Image\Image
      */
     public function fetch()

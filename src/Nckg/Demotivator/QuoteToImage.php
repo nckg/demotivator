@@ -35,13 +35,13 @@ class QuoteToImage
         $this->fontPath = __DIR__ . '/../../../vendor/google/fonts/';
     }
 
-
-
     /**
+     * Creates a new image with our quote on it
+     *
      * @param $quote
      * @return \Intervention\Image\Image
      */
-    public function fetch($quote)
+    public function make($quote)
     {
         $parts = explode("\n", $quote);
         $posY = 0;
@@ -54,11 +54,10 @@ class QuoteToImage
 
         $image->resizeCanvas(null, $posY, 'top');
 
-        if ($image->height() > 800) {
-            $image->resize(null, 800, function ($constraint) {
-                $constraint->aspectRatio();
-            });
-        }
+        $image->resize(null, 800, function ($constraint) {
+            $constraint->aspectRatio();
+            $constraint->upsize();
+        });
 
         return $image;
     }

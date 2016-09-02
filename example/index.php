@@ -1,33 +1,19 @@
 <?php
 
+use Intervention\Image\ImageManager;
+use Nckg\Demotivator\Collection;
+use Nckg\Demotivator\ImageGenerator;
+
 require __DIR__ . "/../vendor/autoload.php";
 
-function getJson($file) {
-    return json_decode(file_get_contents(realpath(__DIR__ . "/../data/$file")));
-}
+// Get quotes
+$quotes = new Collection(json_decode(file_get_contents(realpath(__DIR__ . "/../data/quotes.json"))));
 
-use Intervention\Image\ImageManager;
+// get fonts
+$fonts = new Collection(json_decode(file_get_contents(realpath(__DIR__ . "/../data/font-pairs.json"))));
 
-// create an image manager instance with favored driver
-$manager = new ImageManager;
-$quote = (new \Nckg\Demotivator\Collection(getJson("quotes.json")))->random();
-$fontCollection = new \Nckg\Demotivator\Collection(getJson("font-pairs.json"));
-$imageFetcher = new \Nckg\Demotivator\ImageFetcher($manager);
-$textGenerator = new \Nckg\Demotivator\QuoteToImage($manager, $fontCollection);
+$demotivator = new ImageGenerator($fonts, new ImageManager);
 
-$image = $imageFetcher->fetch();
+$image = $demotivator->make($quotes->random());
 
-while ($image->width() < 800 or $image->height() < 800) {
-    $image = $imageFetcher->fetch();
-}
-
-if ($image->width() != $image->height()) {
-    $size = ($image->width() > $image->height()) ? $image->height() : $image->width();
-    $image->crop($size, $size);
-}
-
-if ($image->width() > 1080) {
-    $image->resize(1080, 1080);
-}
-$image->insert($textGenerator->fetch($quote), 'center');
 echo $image->response('jpg');

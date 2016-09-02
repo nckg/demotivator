@@ -14,7 +14,7 @@ class QuoteToImageTest extends \PHPUnit\Framework\TestCase
         $class = new \Nckg\Demotivator\QuoteToImage($manager, $fontCollection);
 
         // Act
-        $image = $class->fetch("Hello\nWorld");
+        $image = $class->make("Hello\nWorld");
 
         // Assert
         $this->assertEquals(372, $image->height());
